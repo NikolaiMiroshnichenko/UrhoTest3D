@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="UrhoTestApp.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    xmlns:urho="clr-namespace:Urho.Forms;assembly=UrhoSharp.Forms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="this">
+
+    <StackLayout Spacing="0">
+
+        <StackLayout BackgroundColor="Gray" Orientation="Horizontal">
+            <Label Text="X position changing" TextColor="White" />
+            <Label HorizontalOptions="EndAndExpand" Text="{Binding Source={x:Reference Name=x_pos_slider}, Path=Value, StringFormat='slider value: {0:0.00}'}" />
+        </StackLayout>
+        <Slider
+            x:Name="x_pos_slider"
+            BackgroundColor="Gray"
+            Maximum="2"
+            Minimum="-2"
+            ValueChanged="X_Slider_ValueChanged"
+            Value="0" />
+        <StackLayout BackgroundColor="Gray" Orientation="Horizontal">
+            <Label Text="Y position changing" TextColor="White" />
+            <Label HorizontalOptions="EndAndExpand" Text="{Binding Source={x:Reference Name=y_pos_slider}, Path=Value, StringFormat='slider value: {0:0.00}'}" />
+        </StackLayout>
+        <Slider
+            x:Name="y_pos_slider"
+            BackgroundColor="Gray"
+            Maximum="10"
+            Minimum="-10"
+            ValueChanged="Y_Slider_ValueChanged"
+            Value="0" />
+
+        <StackLayout BackgroundColor="Gray" Orientation="Horizontal">
+            <Label
+                BackgroundColor="Gray"
+                Text="Z position changing"
+                TextColor="White" />
+            <Label HorizontalOptions="EndAndExpand" Text="{Binding Source={x:Reference Name=z_slider}, Path=Value, StringFormat='slider value: {0:0.00}'}" />
+        </StackLayout>
+        <Slider
+            x:Name="z_slider"
+            BackgroundColor="Gray"
+            Maximum="10"
+            Minimum="-5"
+            ValueChanged="Z_Slider_ValueChanged"
+            Value="0" />
+
+        <Label
+            BackgroundColor="Gray"
+            Text="Camera X circle rotation"
+            TextColor="White" />
+        <Slider
+            x:Name="sliderRotation"
+            BackgroundColor="Gray"
+            Maximum="20"
+            Minimum="0"
+            ValueChanged="X_Rotation_Slider_ValueChanged"
+            Value="0" />
+
+        <Label
+            BackgroundColor="Gray"
+            Text="Camera Y circle rotation"
+            TextColor="White" />
+        <Slider
+            x:Name="sliderRotationY"
+            BackgroundColor="Gray"
+            Maximum="20"
+            Minimum="0"
+            ValueChanged="Y_Rotation_Slider_ValueChanged"
+            Value="0" />
+
+        <Label
+            BackgroundColor="Gray"
+            Text="Camera X rombus rotation"
+            TextColor="White" />
+        <Slider
+            BackgroundColor="Gray"
+            Maximum="20"
+            Minimum="0"
+            ValueChanged="X_Rombus_Rotation_Slider_ValueChanged"
+            Value="0" />
+
+        <StackLayout Orientation="Horizontal">
+            <Label
+                HeightRequest="25"
+                Text="Restart Camera"
+                VerticalOptions="Start">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Restart_Button_Clicked" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Slider Value" TextColor="OrangeRed" />
+            <Label x:Name="sliderValueLabel" TextColor="OrangeRed" />
+            <Label Text="X rotation:" TextColor="Blue" />
+            <Label x:Name="rotationValueLabel" TextColor="Blue" />
+        </StackLayout>
+
+        <urho:UrhoSurface x:Name="HelloWorldUrhoSurface" VerticalOptions="FillAndExpand" />
+
+        <StackLayout BindingContext="{x:Reference this}" Orientation="Horizontal">
+            <Label FontSize="16" Text="X:" />
+            <Label x:Name="x_pos_label" FontSize="16" />
+            <Label FontSize="16" Text="Y:" />
+            <Label x:Name="y_pos_label" FontSize="16" />
+            <Label FontSize="16" Text="Z:" />
+            <Label x:Name="z_pos_label" FontSize="16" />
+        </StackLayout>
+    </StackLayout>
+
+
+</ContentPage>
